@@ -36,9 +36,11 @@ declare
 { 
   (: For the form, note there is a bit of cheating here... really this should done with an extension or something.   :)
   let $link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/speciality_search")
+  let $zimbra_link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/zimbra_user_list.zmp")
   let $speciality_svs_id := "1.3.6.1.4.1.21367.200.109"
   let $contents := 
-  <div>
+  <div class='container'>
+    <h2>Speciality Search</h2>
     <form action="{$link}">
        <label for='speciality'>Speciality:</label>
        <select name='speciality'>
@@ -64,10 +66,45 @@ declare
 	 <input type='submit' value='Search'/>
        </div>
     </form>
+    <h2>Zimbra User List</h2>
+    <a href="{$zimbra_link}">Get Zimbra User Creation List</a>
+
+    Download the list to the file zimbra_user_list.zmp and use the "zmprov" command.
+    You can find more information <a href="http://wiki.zimbra.com/wiki/Bulk_Provisioning">here</a> on Zimbra bulk user creation.
+
+    For example:
+    <pre>
+      sudo su zimbra
+      wget {$zimbra_link}
+      zmprov -f zimbra_user_list.zmp
+    </pre>
+
+
   </div>
   return page:wrapper($contents)
 };
 
+
+
+(: such a specific thing shouldn't be here.  should be generalized somehow :)
+declare
+  %rest:path("/CSD/adapter/zimbra/{$query_name}/{$doc_name}/zimbra_user_list.zmp")
+  %rest:GET
+  %output:method("text")
+  function page:speciality_search($query_name,$doc_name)
+{ 
+  let $function := csr_proc:get_function_definition($csd_webconf:db,$query_name)
+  let $host := ($function/csd:extension[@type='zimbra_host' and @urn='urn:openhie.org:openinfoman:adapter:zimbra'])[1]
+  let $create :=
+    for $provider in csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider
+    let $demo:= $provider/csd:demographic[1]
+    let $sn := $demo/csd:name[1]/csd:surname/text()
+    let $gn := $demo/csd:name[1]/csd:forename/text()
+    let $dn := concat($gn, " " , $sn)
+    return concat("createAccount " , string($provider/@oid) , "@" , $host , "  password displayName '", $dn , "' givenName '" , $gn , "' sn '", $sn , "'
+")
+ return $create
+};
 
 (: such a specific thing shouldn't be here.  should be generalized somehow :)
 declare
@@ -272,6 +309,52 @@ declare function page:get_email_form($provider,$search_name,$doc_name,$svcs) {
    </div>
 
 };
+
+
+
+
+declare function page:get_invite_form($provider,$search_name,$doc_name,$svcs) {
+ let $action := "http://csd.ihris.org/relay_invite.php"
+ let $text := 
+   if (count($svcs) > 0) then
+     concat("This is an appointment request for the following service(s): " , string-join(for $svc in $svcs return page:get_service_name($doc_name,$svc),", "))
+   else 
+     ""
+ return 
+   <div>
+     <form action="{$action}" method='POST' id='request_form'>
+       <input type='hidden' name='oid' value='{$provider/@oid}'/>
+       <input type='hidden' name='cn' value='{($provider/csd:demographic/csd:name/csd:commonName)[1]}'/>
+       <label for='subject'>Subject:</label>
+       <p>
+	 <input type='text' name='subject' id='subject' value='Scheduling Request'/>
+       </p>
+       <label for='content'>Request Details:</label>
+       <p>
+	 <textarea id='content'  name='content' rows='6' cols='60'>{$text}</textarea>
+       </p>
+       <label id='datetime' for='datetime'>Appointment Date and Time:</label>
+       <p>
+	 <input  size="35" id="datetimepicker_invite"    name='datetime' type="text" />   
+       </p>
+       <label for='duration'>Duration:</label>
+       <p>
+	 <select id='duration' type='text' name='duration'>
+           <option value='15'>15 minutes</option>
+           <option value='30'>30 minutes</option>
+           <option value='60'>one hour</option>
+           <option value='120'>two hours</option>
+	 </select>
+       </p>
+       <div class='pull-right'>
+	 <input type='submit' value='Submit'/>
+       </div>
+
+     </form>
+   </div>
+
+};
+
 
 
 (:helper method to avoid cross site scripting issues :)
@@ -488,9 +571,9 @@ let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:pro
 let $svcs := if ($svc) then ($svc) else ()
 let $fb_tab :=  page:free_busy_data($provider,$query_name,$doc_name,$svcs)
 let $schedulable_tab := page:get_schedulable_data($provider,$query_name,$doc_name,$svcs)
-let $full_tab := <a href="{page:get_provider_link($provider,$query_name)}">View Full Record</a>
+let $full_tab := <a target="_full_record" href="{page:get_provider_link($provider,$query_name)}">View Full Record</a>
 let $email_tab := page:get_email_form($provider,$query_name,$doc_name,$svcs)
-let $invite_tab := ("INVITE RELAY",$svcs)
+let $invite_tab := page:get_invite_form($provider,$query_name,$doc_name,$svcs)
 return page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab)
 };
 
@@ -540,6 +623,7 @@ declare function page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab
     <script type="text/javascript">
     $( document ).ready(function() {{        
      $('#datetimepicker_appointment').datetimepicker({{format: 'yyyy-mm-ddThh:ii:ss+00:00',startDate:'2013-10-01'}});
+     $('#datetimepicker_invite').datetimepicker({{format: 'yyyy-mm-ddThh:ii:ss+00:00',startDate:'2013-10-01'}});
     }});
     </script>
   </head>
