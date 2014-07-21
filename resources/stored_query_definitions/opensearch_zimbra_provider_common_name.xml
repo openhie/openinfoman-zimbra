@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csd:careServicesFunction 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:csd="urn:ihe:iti:csd:2013"
+  xsi:schemaLocation="urn:ihe:iti:csd:2013 CSD.xsd" 
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:ev="http://www.w3.org/2001/xml-events" 
+  xmlns:xforms="http://www.w3.org/2002/xforms"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:hfp="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty"
+  xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+  uuid="3eecaef9-8710-4d1e-8fc0-ccc9893fcce7"
+  content-type="text/xml">
+  <csd:description>
+    Peforms a search request on a provider's common name according to the OpenSearch 1.1 Specification:
+      http://www.opensearch.org/Specifications/OpenSearch/1.1
+    Returns search results in opensearch feed for a provider by common name including link to free busy information on Zimbra for scheduling information.
+  </csd:description>
+  <csd:definition ><xi:include parse='text' href='opensearch_zimbra_provider_common_name.xq'/></csd:definition>
+  <xforms:instance>
+    <careServicesRequest>
+      <os:searchTerms/> 
+      <os:startPage/> 
+      <os:startIndex/> 
+      <os:itemsPerPage/> 
+      <type/>
+      <format/>
+      <resource/>
+      <searchURL/>
+    </careServicesRequest>
+  </xforms:instance>
+  <xforms:bind nodeset="os:searchTerms" type="xs:string"/> 
+  <xforms:bind nodeset="os:startPage" type="xs:integer"/> 
+  <xforms:bind nodeset="os:startIndex" type="xs:integer"/> 
+  <xforms:bind nodeset="os:itemsPerPage" type="xs:integer"/> 
+  <xforms:bind nodeset="type" type="xs:string"/> 
+  <xforms:bind nodeset="format" type="xs:string"/> 
+  <xforms:bind nodeset="resource" type="xs:string"/> 
+
+  <csd:extension type='zimbra' urn='urn:openhie.org:openinfoman:adapter'/>
+  <csd:extension type='opensearch' urn='urn:openhie.org:openinfoman:adapter'/>
+  <csd:extension type='entity_link' urn='urn:openhie.org:openinfoman:adapter:opensearch'>http://csd.ihris.org/cahie/index.php/view_csd_provider?id=csd_provider|</csd:extension>
+  <csd:extension type='provider_link' urn='urn:openhie.org:openinfoman:adapter:zimbra'>http://csd.ihris.org/cahie/index.php/view_csd_provider?id=csd_provider|</csd:extension>
+  <csd:extension type='zimbra_host' urn='urn:openhie.org:openinfoman:adapter:zimbra'>ec2-54-216-82-154.eu-west-1.compute.amazonaws.com</csd:extension>
+  <csd:extension type='description' urn='urn:openhie.org:openinfoman:adapter:opensearch'>
+    <os:ShortName>Provider Search / FreeBusy</os:ShortName> <!-- customize with a short name of the search (search title). -->
+    <os:Description>Use this search to search for a health care provider by their name and get free busy information from zimbra</os:Description> <!--customize with a description of the search -->
+    <os:Tags>search provider csd freebusy zimbra</os:Tags>
+    <os:Contact>email@example.org</os:Contact> <!-- customize with your email contact -->
+    <os:LongName>CSD Provider Search by Common Name: Zimbra Free Busy</os:LongName> <!--customize with the name of this search to identify your organization -->
+    <os:email_contact>email@example.org</os:email_contact> <!-- customize with your email contact -->
+    <os:Image height="64" width="64" type="image/png">http://upload.wikimedia.org/wikipedia/commons/7/74/GeoGebra_icon_geogebra.png</os:Image> 
+    <os:Query role="example" searchTerms="Constance Peterson" />
+    <os:Developer>OpenInfoMan Developement Team</os:Developer> <!-- customize with your email contact -->
+    <os:Attribution>Search data Copyright 2014, OpenInfoManTeam., All Rights Reserved</os:Attribution>
+    <os:Language>en-us</os:Language>
+
+  </csd:extension>
+</csd:careServicesFunction>

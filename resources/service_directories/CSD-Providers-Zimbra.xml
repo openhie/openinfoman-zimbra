@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSD xmlns="urn:ihe:iti:csd:2013" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ihe:iti:csd:2013 CSD.xsd">
+	<organizationDirectory>
+		<organization oid="1.3.6.1.4.1.21367.200.99.1">
+			<codedType code="101-002" codingScheme="1.3.6.1.4.1.21367.100.1">Integrated Delivery Network</codedType>
+			<primaryName>Connectathon CSD IDN One</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">1234 Cactus Way</addressLine>
+				<addressLine component="city">Santa Fe</addressLine>
+				<addressLine component="stateProvince">NM</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">87501</addressLine>
+			</address>
+			<address type="Mailing">
+				<addressLine component="streetAddress">7890 Forest Road</addressLine>
+				<addressLine component="city">Santa Fe</addressLine>
+				<addressLine component="stateProvince">NM</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">87505</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Contact, Connie</commonName>
+						<forename>Connie</forename>
+						<surname>Contact</surname>
+					</name>
+					<address>
+						<addressLine component="StreetAddress">7890 Forest Road</addressLine>
+						<addressLine component="City">Santa Fe</addressLine>
+						<addressLine component="Country">NM</addressLine>
+						<addressLine component="PostCode">87505</addressLine>
+					</address>
+				</person>
+			</contact>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>200-1</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="ko" codingScheme="BCP 47">Korean</language>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<language code="bn" codingScheme="BCP 47">Bengali</language>
+			<contactPoint>
+				<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">800-555-1001</codedType>
+			</contactPoint>
+			<contactPoint>
+				<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">800-555-1011</codedType>
+			</contactPoint>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</organization>
+		<organization oid="1.3.6.1.4.1.21367.200.99.2">
+			<codedType code="101-003" codingScheme="1.3.6.1.4.1.21367.100.1">Non-government Organization</codedType>
+			<primaryName>Connectathon CSD NGO One</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">4212 Maguire Way</addressLine>
+				<addressLine component="city">Augusta</addressLine>
+				<addressLine component="stateProvince">NJ</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">07822</addressLine>
+			</address>
+			<address type="Mailing">
+				<addressLine component="streetAddress">4212 Maguire Way</addressLine>
+				<addressLine component="city">Augusta</addressLine>
+				<addressLine component="stateProvince">NJ</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">07822</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">MacDonald, Merideth</commonName>
+						<forename>Merideth</forename>
+						<surname>MacDonald</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">4212 Maguire Way</addressLine>
+						<addressLine component="city">Augusta</addressLine>
+						<addressLine component="stateProvince">NJ</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">07822</addressLine>
+					</address>
+				</person>
+			</contact>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>200-1</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-13</credentialIssueDate>
+			</credential>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<contactPoint>
+				<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">800-555-1001</codedType>
+			</contactPoint>
+			<contactPoint>
+				<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">800-555-1011</codedType>
+			</contactPoint>
+			<record created="2013-12-13T12:00:00+00:00" updated="2013-12-13T12:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</organization>
+		<organization oid="1.3.6.1.4.1.21367.200.99.3">
+			<codedType code="101-003" codingScheme="1.3.6.1.4.1.21367.100.1">Non-government Organization</codedType>
+			<primaryName>Connectathon CSD NGO Two</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">11 Oak Lane</addressLine>
+				<addressLine component="city">Harrisburg</addressLine>
+				<addressLine component="stateProvince">OR</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">97466</addressLine>
+			</address>
+			<address type="Mailing">
+				<addressLine component="streetAddress">11 Oak Lane</addressLine>
+				<addressLine component="city">Harrisburg</addressLine>
+				<addressLine component="stateProvince">OR</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">97466</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Ortiz, Manuel</commonName>
+						<forename>Manuel</forename>
+						<surname>Ortiz</surname>
+					</name>
+					<address type="Mailing">
+						<addressLine component="streetAddress">11 Oak Lane</addressLine>
+						<addressLine component="city">Harrisburg</addressLine>
+						<addressLine component="stateProvince">OR</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">97466</addressLine>
+					</address>
+				</person>
+			</contact>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>200-1</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-13</credentialIssueDate>
+			</credential>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<contactPoint>
+				<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">800-555-1001</codedType>
+			</contactPoint>
+			<contactPoint>
+				<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">800-555-1011</codedType>
+			</contactPoint>
+			<record created="2013-12-13T12:00:00+00:00" updated="2013-12-13T12:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</organization>
+		<organization oid="1.3.6.1.4.1.21367.200.99.4">
+			<codedType code="101-003" codingScheme="1.3.6.1.4.1.21367.100.1">Non-government Organization</codedType>
+			<primaryName>Connectathon CSD NGO Quatre</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">22 rue du général de Gaulle </addressLine>
+				<addressLine component="city">Nancy</addressLine>
+				<addressLine component="country">France</addressLine>
+				<addressLine component="postalCode">54000</addressLine>
+			</address>
+			<address type="Mailing">
+				<addressLine component="streetAddress">22 rue du général de Gaulle </addressLine>
+				<addressLine component="city">Nancy</addressLine>
+				<addressLine component="country">France</addressLine>
+				<addressLine component="postalCode">54000</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="fr">Galon, Marie-Christine</commonName>
+						<forename>Marie-Christine</forename>
+						<surname>Galon</surname>
+					</name>
+					<address type="Mailing">
+						<addressLine component="streetAddress">22 rue du général de Gaulle </addressLine>
+						<addressLine component="city">Nancy</addressLine>
+						<addressLine component="country">France</addressLine>
+						<addressLine component="postalCode">54000</addressLine>
+					</address>
+				</person>
+			</contact>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>200-1</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-13</credentialIssueDate>
+			</credential>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="fr" codingScheme="BCP 47">French</language>
+			<contactPoint>
+				<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">03.33.45.67.12</codedType>
+			</contactPoint>
+			<contactPoint>
+				<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">03.33.45.67.22</codedType>
+			</contactPoint>
+			<record created="2013-12-13T12:00:00+00:00" updated="2013-12-13T12:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</organization>
+		<organization oid="1.3.6.1.4.1.21367.200.99.5">
+			<codedType code="101-003" codingScheme="1.3.6.1.4.1.21367.100.1">Non-government Organization</codedType>
+			<primaryName>Connectathon CSD NGO Trois</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">45 Avenue des Ternes</addressLine>
+				<addressLine component="city">Paris</addressLine>
+				<addressLine component="country">France</addressLine>
+				<addressLine component="postalCode">75008</addressLine>
+			</address>
+			<address type="Mailing">
+				<addressLine component="streetAddress">45 Avenue des Ternes</addressLine>
+				<addressLine component="city">Paris</addressLine>
+				<addressLine component="country">France</addressLine>
+				<addressLine component="postalCode">75008</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="fr">Du Puits, Jean-Marc</commonName>
+						<forename>Jean-Marc</forename>
+						<surname>Du Puits</surname>
+					</name>
+					<address type="Mailing">
+						<addressLine component="streetAddress">45 Avenue des Ternes</addressLine>
+						<addressLine component="city">Paris</addressLine>
+						<addressLine component="country">France</addressLine>
+						<addressLine component="postalCode">75008</addressLine>
+					</address>
+				</person>
+			</contact>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>200-1</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-13</credentialIssueDate>
+			</credential>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="fr" codingScheme="BCP 47">French</language>
+			<contactPoint>
+				<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">01.22.45.67.89</codedType>
+			</contactPoint>
+			<contactPoint>
+				<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">01.22.45.67.99</codedType>
+			</contactPoint>
+			<record created="2013-12-13T12:00:00+00:00" updated="2013-12-13T12:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</organization>
+	</organizationDirectory>
+	<serviceDirectory>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.101">
+			<codedType code="101-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.102">
+			<codedType code="101-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.103">
+			<codedType code="101-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.104">
+			<codedType code="101-004" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.105">
+			<codedType code="101-005" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Inactive" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.106">
+			<codedType code="101-006" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.107">
+			<codedType code="101-007" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.108">
+			<codedType code="101-008" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Inactive" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.109">
+			<codedType code="101-009" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.110">
+			<codedType code="101-110" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.111">
+			<codedType code="101-111" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.112">
+			<codedType code="101-112" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+		<service oid="1.3.6.1.4.1.21367.200.99.111.101.113">
+			<codedType code="101-113" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="Active" sourceDirectory="http://www.ihe.net"/>
+		</service>
+	</serviceDirectory>
+	<facilityDirectory>
+		<facility oid="1.3.6.1.4.1.21367.200.99.11">
+			<codedType code="103-110" codingScheme="1.3.6.1.4.1.21367.100.1">Radiology - Imaging Services</codedType>
+			<primaryName>Connectathon Radiology Facility</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">1234 Cactus Way</addressLine>
+				<addressLine component="city">Santa Fe</addressLine>
+				<addressLine component="stateProvince">NM</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">87501</addressLine>
+			</address>
+			<address type="Practice">
+				<addressLine component="streetAddress">2222 19th Ave SW</addressLine>
+				<addressLine component="city">Santa Fe</addressLine>
+				<addressLine component="stateProvince">NM</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">87124</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Anderson, Andrew</commonName>
+						<forename>Andrew</forename>
+						<surname>Anderson</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">2222 19th Ave SW</addressLine>
+						<addressLine component="city">Santa Fe</addressLine>
+						<addressLine component="stateProvince">NM</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">87124</addressLine>
+					</address>
+				</person>
+			</contact>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Juarez, Julio</commonName>
+						<forename>Julio</forename>
+						<surname>Juarez</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">2222 19th Ave SW</addressLine>
+						<addressLine component="city">Santa Fe</addressLine>
+						<addressLine component="stateProvince">NM</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">87124</addressLine>
+					</address>
+				</person>
+			</contact>
+			<geocode>
+				<latitude>35.05</latitude>
+				<longitude>106.60</longitude>
+			</geocode>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1">
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.102">
+						<name>
+							<commonName language="en">Connectathon Radiation Therapy</commonName>
+						</name>
+						<language code="en" codingScheme="BCP 47">English</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>1</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>12:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>3</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>12:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>5</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>12:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.113">
+						<name>
+							<commonName language="en">Connectathon Women's Imaging Service</commonName>
+						</name>
+						<language code="en" codingScheme="BCP 47">English</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>1</dayOfTheWeek>
+							<beginningHour>13:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>3</dayOfTheWeek>
+							<beginningHour>13:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>5</dayOfTheWeek>
+							<beginningHour>13:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.113">
+						<name>
+							<commonName language="es">Connectathon Servicio de Radiologica de la Mujer</commonName>
+						</name>
+						<language code="es" codingScheme="BCP 47">Spanish</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>2</dayOfTheWeek>
+							<beginningHour>13:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>4</dayOfTheWeek>
+							<beginningHour>13:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.110">
+						<name>
+							<commonName language="en">Connectathon Screening X-ray</commonName>
+						</name>
+						<language code="en" codingScheme="BCP 47">English</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>1</dayOfTheWeek>
+							<beginningHour>08:00:00</beginningHour>
+							<endingHour>18:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>2</dayOfTheWeek>
+							<beginningHour>08:00:00</beginningHour>
+							<endingHour>18:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>3</dayOfTheWeek>
+							<beginningHour>08:00:00</beginningHour>
+							<endingHour>18:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>4</dayOfTheWeek>
+							<beginningHour>08:00:00</beginningHour>
+							<endingHour>18:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>5</dayOfTheWeek>
+							<beginningHour>08:00:00</beginningHour>
+							<endingHour>18:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>6</dayOfTheWeek>
+							<beginningHour>08:00:00</beginningHour>
+							<endingHour>18:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+				</organization>
+			</organizations>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>1</dayOfTheWeek>
+				<beginningHour>08:00:00</beginningHour>
+				<endingHour>18:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>2</dayOfTheWeek>
+				<beginningHour>13:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>3</dayOfTheWeek>
+				<beginningHour>09:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>4</dayOfTheWeek>
+				<beginningHour>13:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>5</dayOfTheWeek>
+				<beginningHour>09:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="104-004" sourceDirectory="http://www.ihe.net"/>
+		</facility>
+		<facility oid="1.3.6.1.4.1.21367.200.99.12">
+			<codedType code="103-003" codingScheme="1.3.6.1.4.1.21367.100.1">Dialysis</codedType>
+			<primaryName>Connectathon Dialysis Facility One</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">1234 Cactus Way</addressLine>
+				<addressLine component="city">Santa Fe</addressLine>
+				<addressLine component="stateProvince">NM</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">87501</addressLine>
+			</address>
+			<address type="Practice">
+				<addressLine component="streetAddress">2222 19th Ave SW</addressLine>
+				<addressLine component="city">Rio Rancho</addressLine>
+				<addressLine component="stateProvince">NM</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">87124</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Benson, Barbara</commonName>
+						<forename>Barbara</forename>
+						<surname>Benson</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">2222 19th Ave SW</addressLine>
+						<addressLine component="stateProvince">NM</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">87124</addressLine>
+					</address>
+				</person>
+			</contact>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Martinez, Ruby</commonName>
+						<forename>Ruby</forename>
+						<surname>Martinez</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">2222 19th Ave SW</addressLine>
+						<addressLine component="stateProvince">NM</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">87124</addressLine>
+					</address>
+				</person>
+			</contact>
+			<geocode>
+				<latitude>35.05</latitude>
+				<longitude>106.60</longitude>
+			</geocode>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1">
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.104">
+						<name>
+							<commonName language="en">Connectathon Dialysis Service</commonName>
+						</name>
+						<language code="en" codingScheme="BCP 47">English</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>1</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>2</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>3</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.104">
+						<name>
+							<commonName language="en">Connectathon Diálisis Servicio</commonName>
+						</name>
+						<language code="es" codingScheme="BCP 47">Spanish</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>4</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>5</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+				</organization>
+			</organizations>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>1</dayOfTheWeek>
+				<beginningHour>08:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>5</dayOfTheWeek>
+				<beginningHour>05:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<record created="2013-12-13T12:00:00+00:00" updated="2013-12-13T12:00:00+00:00" status="104-004" sourceDirectory="http://www.ihe.net"/>
+		</facility>
+		<facility oid="1.3.6.1.4.1.21367.200.99.13">
+			<codedType code="103-003" codingScheme="1.3.6.1.4.1.21367.100.1">Dialysis</codedType>
+			<primaryName>Connectathon Dialysis Facility Two</primaryName>
+			<address type="Billing">
+				<addressLine component="streetAddress">434 W. Gurley Street</addressLine>
+				<addressLine component="city">Prescott</addressLine>
+				<addressLine component="stateProvince">AZ</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">86301</addressLine>
+			</address>
+			<address type="Practice">
+				<addressLine component="streetAddress">434 W. Gurley Street</addressLine>
+				<addressLine component="city">Prescott</addressLine>
+				<addressLine component="stateProvince">AZ</addressLine>
+				<addressLine component="country">USA</addressLine>
+				<addressLine component="postalCode">86301</addressLine>
+			</address>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Robertson, Robert</commonName>
+						<forename>Robert</forename>
+						<surname>Robertson</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">434 W. Gurley Street</addressLine>
+						<addressLine component="city">Prescott</addressLine>
+						<addressLine component="stateProvince">AZ</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">86301</addressLine>
+					</address>
+				</person>
+			</contact>
+			<contact>
+				<person>
+					<name>
+						<commonName language="en">Juarez, Angel</commonName>
+						<forename>Angel</forename>
+						<surname>Juarez</surname>
+					</name>
+					<address>
+						<addressLine component="streetAddress">434 W. Gurley Street</addressLine>
+						<addressLine component="city">Prescott</addressLine>
+						<addressLine component="stateProvince">AZ</addressLine>
+						<addressLine component="country">USA</addressLine>
+						<addressLine component="postalCode">86301</addressLine>
+					</address>
+				</person>
+			</contact>
+			<geocode>
+				<latitude>34.5441</latitude>
+				<longitude>122.4717</longitude>
+			</geocode>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1">
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.104">
+						<name>
+							<commonName language="en">Connectathon Dialysis Service</commonName>
+						</name>
+						<language code="en" codingScheme="BCP 47">English</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>1</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>2</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>3</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>4</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>5</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>6</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+					<service oid="1.3.6.1.4.1.21367.200.99.111.101.104">
+						<name>
+							<commonName language="en">Connectathon Diálisis Servicio</commonName>
+						</name>
+						<language code="es" codingScheme="BCP 47">Spanish</language>
+						<operatingHours>
+							<openFlag>1</openFlag>
+							<dayOfTheWeek>5</dayOfTheWeek>
+							<beginningHour>09:00:00</beginningHour>
+							<endingHour>17:00:00</endingHour>
+							<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+						</operatingHours>
+					</service>
+				</organization>
+			</organizations>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>1</dayOfTheWeek>
+				<beginningHour>08:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<operatingHours>
+				<openFlag>1</openFlag>
+				<dayOfTheWeek>5</dayOfTheWeek>
+				<beginningHour>05:00:00</beginningHour>
+				<endingHour>17:00:00</endingHour>
+				<beginEffectiveDate>2013-12-01</beginEffectiveDate>
+			</operatingHours>
+			<record created="2013-12-13T12:00:00+00:00" updated="2013-12-13T12:00:00+00:00" status="104-004" sourceDirectory="http://www.ihe.net"/>
+		</facility>
+	</facilityDirectory>
+	<providerDirectory>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1111">
+			<codedType code="105-007" codingScheme="1.3.6.1.4.1.21367.100.1">Physician/Medical Oncology</codedType>
+			<demographic>
+				<name>
+					<commonName>Banargee, Dev</commonName>
+					<honorific>Dr.</honorific>
+					<forename>Dev</forename>
+					<surname>Banerjee</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-1111</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1111@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-1111</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">8909 Sunset Way</addressLine>
+					<addressLine component="city">Santa Fe</addressLine>
+					<addressLine component="stateProvince">NM</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">87505</addressLine>
+				</address>
+				<gender>M</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<language code="bn" codingScheme="BCP 47">Bengali</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1"/>
+				<organization oid="1.3.6.1.4.1.21367.200.99.3"/>
+			</organizations>
+			<facilities>
+			  <facility oid="1.3.6.1.4.1.21367.200.99.11">
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.102"> <!-- radiation therapy-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.104"> <!-- routine exam-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.113"> <!-- Screening Mamography-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <operatingHours>
+				<dayOfTheWeek>1</dayOfTheWeek> <!-- Monday is 1 -->
+				<dayOfTheWeek>3</dayOfTheWeek> 
+				<dayOfTheWeek>5</dayOfTheWeek> 
+				<beginningHour>10:00:00</beginningHour>
+				<endingHour>14:00:00</endingHour>
+			      </operatingHours>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			  </facility>
+			</facilities>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<specialty code="109-005" codingScheme="1.3.6.1.4.1.21367.100.1"/> <!--Woman's Imaging Services -->
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1112">
+			<codedType code="105-113" codingScheme="1.3.6.1.4.1.21367.100.1">Physician/Mammographer</codedType>
+			<demographic>
+				<name>
+					<commonName>McDonald, Mary</commonName>
+					<honorific>Dr.</honorific>
+					<forename>Mary</forename>
+					<surname>McDonald</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-1111</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1112@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-1111</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">8909 Sunset Way</addressLine>
+					<addressLine component="city">Santa Fe</addressLine>
+					<addressLine component="stateProvince">NM</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">87505</addressLine>
+				</address>
+				<gender>F</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1"/>
+			</organizations>
+			<facilities>
+			  <facility oid="1.3.6.1.4.1.21367.200.99.11">
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.102"> <!-- radiation therapy-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.104"> <!-- routine exam-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.113"> <!-- Screening Mamography-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <operatingHours>
+				<dayOfTheWeek>1</dayOfTheWeek> <!-- Monday is 1 -->
+				<dayOfTheWeek>3</dayOfTheWeek> 
+				<dayOfTheWeek>5</dayOfTheWeek> 
+				<beginningHour>10:00:00</beginningHour>
+				<endingHour>14:00:00</endingHour>
+			      </operatingHours>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			  </facility>
+			  <facility oid="1.3.6.1.4.1.21367.200.99.12">
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.102"> <!-- radiation therapy-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.104"> <!-- routine exam-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			    <service oid="1.3.6.1.4.1.21367.200.99.111.101.113"> <!-- Screening Mamography-->
+			      <freeBusyURI>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=ifb</freeBusyURI>
+			      <operatingHours>
+				<dayOfTheWeek>1</dayOfTheWeek> <!-- Monday is 1 -->
+				<dayOfTheWeek>3</dayOfTheWeek> 
+				<dayOfTheWeek>5</dayOfTheWeek> 
+				<beginningHour>10:00:00</beginningHour>
+				<endingHour>14:00:00</endingHour>
+			      </operatingHours>
+			      <extension type='calview' oid='urn:openhie.org:openinfoman:adapter:zimbra'>http://ec2-54-216-82-154.eu-west-1.compute.amazonaws.com/home/1.3.6.1.4.1.21367.200.99.1111?fmt=freebusy</extension>
+			    </service>
+			  </facility>
+			</facilities>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-005" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1113">
+			<codedType code="105-114" codingScheme="1.3.6.1.4.1.21367.100.1">Radiology Technician</codedType>
+			<demographic>
+				<name>
+					<commonName>Johnson, Jack</commonName>
+					<forename>Jack</forename>
+					<surname>Johnson</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-2223</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1113@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-2223</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">8909 Sunset Way</addressLine>
+					<addressLine component="city">Santa Fe</addressLine>
+					<addressLine component="stateProvince">NM</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">87505</addressLine>
+				</address>
+				<gender>M</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1"/>
+			</organizations>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Certificate@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-005" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1114">
+			<codedType code="105-114" codingScheme="1.3.6.1.4.1.21367.100.1">Radiology Technician</codedType>
+			<demographic>
+				<name>
+					<commonName>Carrara, Carla</commonName>
+					<forename>Carla</forename>
+					<surname>Carrara</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-1114</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1114@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-1114</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">8909 Sunset Way</addressLine>
+					<addressLine component="city">Santa Fe</addressLine>
+					<addressLine component="stateProvince">NM</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">87505</addressLine>
+				</address>
+				<gender>F</gender>
+			</demographic>
+			<language code="es" codingScheme="BCP 47">Spanish</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.3"/>
+			</organizations>
+			<credential>
+				<codedType code="108-002" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Certificate@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-005" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1115">
+			<codedType code="105-007" codingScheme="1.3.6.1.4.1.21367.100.1">Physician/Medical Oncology</codedType>
+			<demographic>
+				<name>
+					<commonName>Robertson, Robert</commonName>
+					<forename>Robert</forename>
+					<surname>Robertson</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-4445</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1115@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-4445</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">2887 Commerce Blvd</addressLine>
+					<addressLine component="city">Orlando</addressLine>
+					<addressLine component="stateProvince">FL</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">32789</addressLine>
+				</address>
+				<gender>M</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.3"/>
+			</organizations>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>		
+		
+		<provider oid="1.3.6.1.4.1.21367.200.99.1116">
+			<codedType code="105-003" codingScheme="1.3.6.1.4.1.21367.100.1">Nurse Practitioner</codedType>
+			<demographic>
+				<name>
+					<commonName>Williamson, William</commonName>
+					<forename>William</forename>
+					<surname>Williamson</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-4445</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1116@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-4445</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">2887 Commerce Blvd</addressLine>
+					<addressLine component="city">Orlando</addressLine>
+					<addressLine component="stateProvince">FL</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">32789</addressLine>
+				</address>
+				<gender>M</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.3"/>
+			</organizations>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>		
+		<provider oid="1.3.6.1.4.1.21367.200.99.1117">
+			<codedType code="105-003" codingScheme="1.3.6.1.4.1.21367.100.1">Nurse Practitioner</codedType>
+			<demographic>
+				<name>
+					<commonName>Fredricks, Theodora</commonName>
+					<forename>Theodora</forename>
+					<surname>Fredricks</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-4945</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1117@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-4945</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">2887 Commerce Blvd</addressLine>
+					<addressLine component="city">Orlando</addressLine>
+					<addressLine component="stateProvince">FL</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">32789</addressLine>
+				</address>
+				<gender>F</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.3"/>
+			</organizations>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1118">
+			<codedType code="105-003" codingScheme="1.3.6.1.4.1.21367.100.1">Nurse Practitioner</codedType>
+			<demographic>
+				<name>
+					<commonName>Grant, Glena</commonName>
+					<forename>Glenda</forename>
+					<surname>Grant</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-4945</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1118@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-4945</codedType>
+				</contactPoint>
+<address type="Mailing">
+					<addressLine component="streetAddress">8909 Sunset Way</addressLine>
+					<addressLine component="city">Santa Fe</addressLine>
+					<addressLine component="stateProvince">NM</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">87505</addressLine>
+				</address>
+				<gender>F</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.1"/>
+			</organizations>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+		<provider oid="1.3.6.1.4.1.21367.200.99.1119">
+			<codedType code="105-003" codingScheme="1.3.6.1.4.1.21367.100.1">Nurse Practitioner</codedType>
+			<demographic>
+				<name>
+					<commonName>Rogers, Rhonda</commonName>
+					<forename>Rhonda</forename>
+					<surname>Rogers</surname>
+				</name>
+				<contactPoint>
+					<codedType code="BP" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-777-4945</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="EMAIL" codingScheme="urn:ihe:iti:csd:2013:contactPoint">
+					  1.3.6.1.4.1.21367.200.99.1119@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com
+					</codedType>
+				</contactPoint>
+				<contactPoint>
+					<codedType code="FAX" codingScheme="urn:ihe:iti:csd:2013:contactPoint">555-888-4945</codedType>
+				</contactPoint>
+				<address type="Mailing">
+					<addressLine component="streetAddress">2887 Commerce Blvd</addressLine>
+					<addressLine component="city">Orlando</addressLine>
+					<addressLine component="stateProvince">FL</addressLine>
+					<addressLine component="country">USA</addressLine>
+					<addressLine component="postalCode">32789</addressLine>
+				</address>
+				<gender>F</gender>
+			</demographic>
+			<language code="en" codingScheme="BCP 47">English</language>
+			<organizations>
+				<organization oid="1.3.6.1.4.1.21367.200.99.3"/>
+			</organizations>
+			<credential>
+				<codedType code="108-001" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+				<number>A_Degree@Connectathon_domain_name</number>
+				<issuingAuthority>Connectathon_Manager</issuingAuthority>
+				<credentialIssueDate>2013-12-01</credentialIssueDate>
+			</credential>
+			<specialty code="109-003" codingScheme="1.3.6.1.4.1.21367.100.1"/>
+			<record created="2013-12-01T14:00:00+00:00" updated="2013-12-01T14:00:00+00:00" status="106-001" sourceDirectory="http://www.ihe.net"/>
+		</provider>
+	</providerDirectory>
+</CSD>
