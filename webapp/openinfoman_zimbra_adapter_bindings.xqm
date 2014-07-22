@@ -279,6 +279,7 @@ declare function page:get_email_form($provider,$search_name,$doc_name,$svcs) {
    "return true;")
  return 
    <div>
+     <h2>Send E-Mail Request for Appointment</h2>
      <label for='subject'>Subject:</label>
      <p>
        <input type='text' name='subject' id='subject' value='Scheduling Request'/>
@@ -322,6 +323,7 @@ declare function page:get_invite_form($provider,$search_name,$doc_name,$svcs) {
      ""
  return 
    <div>
+     <h2>Send Invitation Request for Appointment</h2>
      <form action="{$action}" method='POST' id='request_form'>
        <input type='hidden' name='oid' value='{$provider/@oid}'/>
        <input type='hidden' name='cn' value='{($provider/csd:demographic/csd:name/csd:commonName)[1]}'/>
@@ -427,7 +429,9 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids)
  		  Service: {$svc_name} ({$svc_oid})
 		  <br/>
 		  <a id="{$req_id}" href="{$fb_uri}" onClick="{$fb_data_js}">View Free Busy Data</a>
-		  / <a href="{$link}">Schedule This Service</a> 
+		  / <a href="{$link}#email" onClick="$('#tab_email a').tab('show');return false;" >Schedule This Service</a> 
+		  
+		  / <a href="{$link}#invite" onClick="$('#tab_invite a').tab('show');return false;">Send Invite For This Service</a> 
 
 		  { if ($cal_url) then  ( " / ",  <a target='_id'  href="{$cal_url}">View Calendar</a>) else () }
 		  <pre id="{$data_id}"/>
@@ -497,7 +501,8 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
 	      return
 	        <li>
  		  Service: {$svc_name} ({$svc_oid})
-		  <a href="{$link}">Schedule</a>
+		  <a href="{$link}#email" onClick="$('#tab_email a').tab('show');return false;">Schedule</a> 
+		  / <a href="{$link}#invite" onClick="$('#tab_email a').tab('show');return false;">Invite</a>
 		  <br/>
 		  Provider Operating Hours:
 		  {page:show_ohs($svc_ohs)}
@@ -571,7 +576,17 @@ let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:pro
 let $svcs := if ($svc) then ($svc) else ()
 let $fb_tab :=  page:free_busy_data($provider,$query_name,$doc_name,$svcs)
 let $schedulable_tab := page:get_schedulable_data($provider,$query_name,$doc_name,$svcs)
-let $full_tab := <a target="_full_record" href="{page:get_provider_link($provider,$query_name)}">View Full Record</a>
+let $full_tab := 
+ <div class='container'>
+   <p>
+     <a target="_full_record" href="{page:get_provider_link($provider,$query_name)}">View Full Record</a>
+     in the Health Worker Registry Management Interface
+   </p>
+   <p>
+     Interface is based on <a href='http://www.ihris.org'>iHRIS Platform</a> and the <a href='https://github.com/openhie/openinfoman-hwr'>OpenInfoMan Health Worker Registry Library</a>
+   </p>
+   
+ </div>
 let $email_tab := page:get_email_form($provider,$query_name,$doc_name,$svcs)
 let $invite_tab := page:get_invite_form($provider,$query_name,$doc_name,$svcs)
 return page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab)
@@ -618,6 +633,16 @@ declare function page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab
 	e.preventDefault()
 	$(this).tab('show')
       }});
+
+var url = document.location.toString();
+if (url.match('#')) {{
+    $('#tab_' + url.split('#')[1] + ' a' ).tab('show') ;
+}} 
+
+// Change hash for page-reload
+//$('.nav-tabs a').on('shown', function (e) {{
+//    window.location.hash = e.target.hash;
+//}})
     }});
    </script>
     <script type="text/javascript">
@@ -646,7 +671,7 @@ declare function page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab
 	  <li id='tab_fb' class="active"><a  href="#fb">Free Busy Data</a></li>
 	  <li id='tab_schedulable'><a  href="#schedulable">Operating Hours</a></li>
 	  <li id='tab_full'><a  href="#full">Full Record</a></li>
-	  <li id='tab_email'><a  href="#email">Email Appt. Request</a></li>
+	  <li id='tab_email'><a  href="#email" >Email Appt. Request</a></li>
 	  <li id='tab_invite'><a  href="#invite">Send Invite</a></li>
 	</ul>
 	<div class="tab-pane active panel-body" id="fb">{$fb_tab}</div>
