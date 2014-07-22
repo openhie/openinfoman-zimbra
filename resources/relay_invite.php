@@ -1,7 +1,11 @@
 <html>
 <body>
+<h1>Simple PHP Relay</h1>
 <?php
-echo "Received Data:<pre>" . print_r($_POST,true) . "</pre>";
+echo "Received Data:<pre style='text-align:left;width:100%;
+            font-family:monospace;
+            font-height:70%;
+            background-color:#ffffcc;border:dashed;border-width:3px;border-color:#ffcc99;opacity:0.8;'>" . print_r($_POST,true) . "</pre>";
 $to = $_POST['oid'] . '@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com';
 $subject = $_POST['subject'];
 $cn = $_POST['cn'];
@@ -44,7 +48,10 @@ END:VEVENT
 END:VCALENDAR
 ";
 
-echo "<br/>Created Invite:<pre>" . $invite . "</pre>";
+echo "<br/>Created Invite:<pre style='text-align:left;width:100%;
+            font-family:monospace;
+            font-height:70%;
+            background-color:#ffffcc;border:dashed;border-width:3px;border-color:#ffcc99;opacity:0.8;'>" . $invite . "</pre>";
 
 
 $headers .= "MIME-version: 1.0\r\n";
@@ -53,15 +60,21 @@ $headers .= "Content-type: text/calendar; method=REQUEST; charset=UTF-8\r\n";
 
 $message = $invite;
 
+?>
 
+<pre style='text-align:left;width:auto;
+            font-family:monospace;
+            font-height:70%;text-align:center
+            overflow:none;margin-top:0;
+            background-color:yellow;border:dashed;border-width:3px;border-color:#ffcc99;opacity:0.8;'>
+<?php
 if ($res = @mail($to,$subject,$message,$headers)) {
     echo "Invitation Sent!";
 } else {
     echo "Failed!";
 }
-
 ?>
-
+</pre>
 
 
 
