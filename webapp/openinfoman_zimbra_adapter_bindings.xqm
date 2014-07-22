@@ -387,7 +387,6 @@ declare function page:free_busy_data($provider,$query_name,$doc_name) {
 declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids) 
 {
   <div>
-    {page:get_provider_desc($provider,$doc_name)}
     <h1>Facility Based Services</h1>
     {if (count($provider/csd:facilities/csd:facility) = 0) then "This provider is not associated to any facilities" else () }
     <ul>
@@ -429,9 +428,9 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids)
  		  Service: {$svc_name} ({$svc_oid})
 		  <br/>
 		  <a id="{$req_id}" href="{$fb_uri}" onClick="{$fb_data_js}">View Free Busy Data</a>
-		  / <a href="{$link}#email" onClick="$('#tab_email a').tab('show');return false;" >Schedule This Service</a> 
+		  / <a href="{$link}#email" onClick="$('#tab_email a').tab('show'); 	window.location.hash = 'email';return false;" >Schedule This Service</a> 
 		  
-		  / <a href="{$link}#invite" onClick="$('#tab_invite a').tab('show');return false;">Send Invite For This Service</a> 
+		  / <a href="{$link}#invite" onClick="$('#tab_invite a').tab('show'); window.location.hash = 'invite';return false;">Send Invite For This Service</a> 
 
 		  { if ($cal_url) then  ( " / ",  <a target='_id'  href="{$cal_url}">View Calendar</a>) else () }
 		  <pre id="{$data_id}"/>
@@ -501,8 +500,8 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
 	      return
 	        <li>
  		  Service: {$svc_name} ({$svc_oid})
-		  <a href="{$link}#email" onClick="$('#tab_email a').tab('show');return false;">Schedule</a> 
-		  / <a href="{$link}#invite" onClick="$('#tab_email a').tab('show');return false;">Invite</a>
+		  <a href="{$link}#email" onClick="$('#tab_email a').tab('show');window.location.hash = 'email';return false;">Schedule</a> 
+		  / <a href="{$link}#invite" onClick="$('#tab_email a').tab('show');window.location.hash = 'invite';return false;">Invite</a>
 		  <br/>
 		  Provider Operating Hours:
 		  {page:show_ohs($svc_ohs)}
@@ -589,7 +588,7 @@ let $full_tab :=
  </div>
 let $email_tab := page:get_email_form($provider,$query_name,$doc_name,$svcs)
 let $invite_tab := page:get_invite_form($provider,$query_name,$doc_name,$svcs)
-return page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab)
+return page:wrapper_tabs($provider,$doc_name,$fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab)
 };
 
 
@@ -597,7 +596,7 @@ return page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_t
 
 
 
-declare function page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab) {
+declare function page:wrapper_tabs($provider,$doc_name,$fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab) {
  <html >
   <head>
 
@@ -615,33 +614,39 @@ declare function page:wrapper_tabs($fb_tab,$schedulable_tab,$full_tab,$email_tab
     $( document ).ready(function() {{
       $('#tab_fb a').click(function (e) {{
 	e.preventDefault()
+	window.location.hash = e.target.hash;
 	$(this).tab('show')
       }});
       $('#tab_schedulable a').click(function (e) {{
 	e.preventDefault()
+	window.location.hash = e.target.hash;
 	$(this).tab('show')
       }});
       $('#tab_full a').click(function (e) {{
 	e.preventDefault()
+	window.location.hash = e.target.hash;
 	$(this).tab('show')
       }});
       $('#tab_email a').click(function (e) {{
 	e.preventDefault()
+	window.location.hash = e.target.hash;
 	$(this).tab('show')
       }});
       $('#tab_invite a').click(function (e) {{
 	e.preventDefault()
+	window.location.hash = e.target.hash;
 	$(this).tab('show')
       }});
 
-var url = document.location.toString();
+
+
 if (url.match('#')) {{
     $('#tab_' + url.split('#')[1] + ' a' ).tab('show') ;
 }} 
 
 // Change hash for page-reload
 //$('.nav-tabs a').on('shown', function (e) {{
-//    window.location.hash = e.target.hash;
+//    
 //}})
     }});
    </script>
@@ -655,6 +660,7 @@ if (url.match('#')) {{
   <body>  
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
+	<img class='pull-left' height='38px' src='http://upload.wikimedia.org/wikipedia/commons/7/74/GeoGebra_icon_geogebra.png'/>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
@@ -663,9 +669,11 @@ if (url.match('#')) {{
           </button>
           <a class="navbar-brand" href="{$csd_webconf:baseurl}CSD">OpenInfoMan</a>
         </div>
+	<img  class='pull-right' src='http://ohie.org/wp-content/uploads/2013/02/openhie-logo.png' style='height:3.5em'/>
       </div>
     </div>
     <div class="container">
+
       <div class="tab-content panel">
 	<ul class="nav nav-tabs">
 	  <li id='tab_fb' class="active"><a  href="#fb">Free Busy Data</a></li>
@@ -674,6 +682,11 @@ if (url.match('#')) {{
 	  <li id='tab_email'><a  href="#email" >Email Appt. Request</a></li>
 	  <li id='tab_invite'><a  href="#invite">Send Invite</a></li>
 	</ul>
+	<div class='container'>
+	  <div class="text-success">
+	  {page:get_provider_desc($provider,$doc_name)}
+	  </div>
+	</div>
 	<div class="tab-pane active panel-body" id="fb">{$fb_tab}</div>
 	<div class="tab-pane panel-body" id="schedulable">{$schedulable_tab}</div>
 	<div class="tab-pane panel-body" id="full">{$full_tab}</div>
@@ -681,6 +694,11 @@ if (url.match('#')) {{
 	<div class="tab-pane panel-body" id="invite">{$invite_tab}</div>
       </div>
     </div>
+    <center>
+     
+     <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='70%'/>
+    </center>
+
   </body>
  </html>
 };
@@ -703,6 +721,7 @@ declare function page:wrapper($content) {
   <body>  
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
+	<img class='pull-left' height='38px' src='http://upload.wikimedia.org/wikipedia/commons/7/74/GeoGebra_icon_geogebra.png'/>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
@@ -711,9 +730,15 @@ declare function page:wrapper($content) {
           </button>
           <a class="navbar-brand" href="{$csd_webconf:baseurl}CSD">OpenInfoMan</a>
         </div>
+	<img  class='pull-right' src='http://ohie.org/wp-content/uploads/2013/02/openhie-logo.png' style='height:3.5em'/>
       </div>
     </div>
     <div class='container'> {$content}</div>
+    <center>
+     
+     <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='70%'/>
+    </center>
+
   </body>
  </html>
 };
