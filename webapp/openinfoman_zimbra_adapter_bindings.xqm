@@ -667,7 +667,7 @@ if (url.match('#')) {{
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{$csd_webconf:baseurl}CSD">OpenInfoMan</a>
+          <a class="navbar-brand" href="{$csd_webconf:baseurl}CSD">OpenInfoMan - Interlinked Health Services Discovery</a>
         </div>
 	<img  class='pull-right' src='http://ohie.org/wp-content/uploads/2013/02/openhie-logo.png' style='height:3.5em'/>
       </div>
@@ -694,9 +694,10 @@ if (url.match('#')) {{
 	<div class="tab-pane panel-body" id="invite">{$invite_tab}</div>
       </div>
     </div>
-    <center>
+    <center >
      
-     <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='70%'/>
+     <img src="{$csd_webconf:baseurl}static/pepfar-logo-seal.png" width='5%'/>
+     <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='30%'/>
     </center>
 
   </body>
@@ -736,7 +737,9 @@ declare function page:wrapper($content) {
     <div class='container'> {$content}</div>
     <center>
      
-     <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='70%'/>
+       <img src="{$csd_webconf:baseurl}static/pepfar-logo-seal.png" width='5%'/>
+       <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='30%'/>
+
     </center>
 
   </body>
