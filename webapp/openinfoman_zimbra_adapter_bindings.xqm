@@ -39,9 +39,9 @@ declare
   let $zimbra_link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/zimbra_user_list.zmp")
   let $speciality_svs_id := "1.3.6.1.4.1.21367.200.109"
   let $contents := 
-  <div class='container'>
+    (
     <h2>Speciality Search</h2>
-    <form action="{$link}">
+    ,<form action="{$link}">
        <label for='speciality'>Speciality:</label>
        <select name='speciality'>
          <option value=''>Select A Speciality</option>
@@ -66,22 +66,19 @@ declare
 	 <input type='submit' value='Search'/>
        </div>
     </form>
-    <h2>Zimbra User List</h2>
-    <a href="{$zimbra_link}">Get Zimbra User Creation List</a>
-
-    Download the list to the file zimbra_user_list.zmp and use the "zmprov" command.
-    You can find more information <a href="http://wiki.zimbra.com/wiki/Bulk_Provisioning">here</a> on Zimbra bulk user creation.
-
-    For example:
-    <pre>
+    ,<h2>Zimbra User List</h2>
+    ,<a href="{$zimbra_link}">Get Zimbra User Creation List</a>
+    ,'Download the list to the file zimbra_user_list.zmp and use the "zmprov" command.    You can find more information '
+    ,<a href="http://wiki.zimbra.com/wiki/Bulk_Provisioning">here</a> 
+    ,'on Zimbra bulk user creation.    For example:'
+    ,<pre>
       sudo su zimbra
       wget {$zimbra_link}
       zmprov -f zimbra_user_list.zmp
     </pre>
+)
 
-
-  </div>
-  return page:wrapper($contents)
+  return csd_webconf:wrapper($contents)
 };
 
 
@@ -152,15 +149,17 @@ declare
    </ul>
    
   let $contents :=
-    <div class='container'>
+    (
       <h3>Search Parameters</h3>
-      Speciality Code: {$code}  on {$codingScheme} <br/>
-      City: {$city} <br/>
-      <h3>Search Results:</h3>
-      {$provider_list}
-    </div>
+      ,"Speciality Code: {$code}  on {$codingScheme}"
+      ,<br/>
+      ,"City: {$city} "
+      ,<br/>
+      ,<h3>Search Results:</h3>
+      ,$provider_list
+      )
 
-  return page:wrapper($contents)
+  return csd_webconf:wrapper($contents)
 
 
 };
@@ -224,11 +223,11 @@ declare
       </ul>
 
    let $contents :=
-      <div class='contatiner'>
-	<a href="{$csd_webconf:baseurl}CSD/adapter/zimbra">Zimbra Adapters</a>
-        {$analyses}
-      </div>
-   return page:wrapper($contents)
+     (
+     <a href="{$csd_webconf:baseurl}CSD/adapter/zimbra">Zimbra Adapters</a>
+     ,$analyses
+     )
+   return csd_webconf:wrapper($contents)
 
 };
 
@@ -597,20 +596,11 @@ return page:wrapper_tabs($provider,$doc_name,$fb_tab,$schedulable_tab,$full_tab,
 
 
 declare function page:wrapper_tabs($provider,$doc_name,$fb_tab,$schedulable_tab,$full_tab,$email_tab,$invite_tab) {
- <html >
-  <head>
-
-    <link href="{$csd_webconf:baseurl}static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="{$csd_webconf:baseurl}static/bootstrap/css/bootstrap-theme.css" rel="stylesheet"/>
-
-    <link rel="stylesheet" type="text/css" media="screen"   href="{$csd_webconf:baseurl}static/bootstrap/js/tab.js"/>    
-
+  let $headers := (
     <link rel="stylesheet" type="text/css" media="screen"   href="{$csd_webconf:baseurl}static/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
-
-    <script src="https://code.jquery.com/jquery.js"/>
-    <script src="{$csd_webconf:baseurl}static/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"/>
-    <script src="{$csd_webconf:baseurl}static/bootstrap/js/bootstrap.min.js"/>
-   <script type="text/javascript">
+    ,<script src="{$csd_webconf:baseurl}static/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"/>
+    ,<script src="{$csd_webconf:baseurl}static/bootstrap/js/tab.js"/>    
+    ,<script type="text/javascript">
     $( document ).ready(function() {{
       $('#tab_fb a').click(function (e) {{
 	e.preventDefault()
@@ -639,41 +629,26 @@ declare function page:wrapper_tabs($provider,$doc_name,$fb_tab,$schedulable_tab,
       }});
 
 
+var hash = window.location.hash.substring(1);
+if (hash)  {{
+   $('#tab_' + hash + ' a' ).tab('show') ;
+}}
 
-if (url.match('#')) {{
-    $('#tab_' + url.split('#')[1] + ' a' ).tab('show') ;
-}} 
+//if (url.match('#')) {{
+//    $('#tab_' + url.split('#')[1] + ' a' ).tab('show') ;
+//}} 
 
-// Change hash for page-reload
-//$('.nav-tabs a').on('shown', function (e) {{
-//    
-//}})
     }});
    </script>
-    <script type="text/javascript">
+   ,<script type="text/javascript">
     $( document ).ready(function() {{        
      $('#datetimepicker_appointment').datetimepicker({{format: 'yyyy-mm-ddThh:ii:ss+00:00',startDate:'2013-10-01'}});
      $('#datetimepicker_invite').datetimepicker({{format: 'yyyy-mm-ddThh:ii:ss+00:00',startDate:'2013-10-01'}});
     }});
     </script>
-  </head>
-  <body>  
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-	<img class='pull-left' height='38px' src='http://upload.wikimedia.org/wikipedia/commons/7/74/GeoGebra_icon_geogebra.png'/>
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{$csd_webconf:baseurl}CSD">OpenInfoMan - Interlinked Health Services Discovery</a>
-        </div>
-	<img  class='pull-right' src='http://ohie.org/wp-content/uploads/2013/02/openhie-logo.png' style='height:3.5em'/>
-      </div>
-    </div>
-    <div class="container">
+    )
 
+    let $content := 
       <div class="tab-content panel">
 	<ul class="nav nav-tabs">
 	  <li id='tab_fb' class="active"><a  href="#fb">Free Busy Data</a></li>
@@ -693,57 +668,12 @@ if (url.match('#')) {{
 	<div class="tab-pane panel-body" id="email">{$email_tab}</div>
 	<div class="tab-pane panel-body" id="invite">{$invite_tab}</div>
       </div>
-    </div>
-    <center >
-     
-     <img src="{$csd_webconf:baseurl}static/pepfar-logo-seal.png" width='5%'/>
-     <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='30%'/>
-    </center>
-
-  </body>
- </html>
+   return csd_webconf:wrapper($content,$headers)
 };
 
 
 
 
 
-declare function page:wrapper($content) {
- <html >
-  <head>
-
-    <link href="{$csd_webconf:baseurl}static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="{$csd_webconf:baseurl}static/bootstrap/css/bootstrap-theme.css" rel="stylesheet"/>
-    
-
-    <script src="https://code.jquery.com/jquery.js"/>
-    <script src="{$csd_webconf:baseurl}static/bootstrap/js/bootstrap.min.js"/>
-  </head>
-  <body>  
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-	<img class='pull-left' height='38px' src='http://upload.wikimedia.org/wikipedia/commons/7/74/GeoGebra_icon_geogebra.png'/>
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{$csd_webconf:baseurl}CSD">OpenInfoMan</a>
-        </div>
-	<img  class='pull-right' src='http://ohie.org/wp-content/uploads/2013/02/openhie-logo.png' style='height:3.5em'/>
-      </div>
-    </div>
-    <div class='container'> {$content}</div>
-    <center>
-     
-       <img src="{$csd_webconf:baseurl}static/pepfar-logo-seal.png" width='5%'/>
-       <img src="{$csd_webconf:baseurl}static/USAID_CP_IH_logos.png" width='30%'/>
-
-    </center>
-
-  </body>
- </html>
-};
 
 
