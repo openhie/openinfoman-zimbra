@@ -9,7 +9,7 @@
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:hfp="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty"
   xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
-  uuid="3eecaef9-8710-4d1e-8fc0-ccc9893fcce7"
+  urn="urn:openhie.org:openinfoman-zimbra:opensearch-provider"
   content-type="text/xml">
   <csd:description>
     Peforms a search request on a provider's common name according to the OpenSearch 1.1 Specification:

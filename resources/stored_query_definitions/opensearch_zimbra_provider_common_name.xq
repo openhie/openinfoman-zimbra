@@ -36,14 +36,14 @@ let $matched_providers :=
 let $html_func := function($provider,$doc_name,$search_name) {
   if (local-name-from-QName(node-name($provider)) = 'provider' and namespace-uri-from-QName(node-name($provider)) = "urn:ihe:iti:csd:2013") then
     let $demo:= $provider/csd:demographic[1]
-    let $oid := string($provider/@oid)
+    let $urn := string($provider/@urn)
     let $adapter_link := concat($careServicesRequest/@base_url,"CSD/adapter/zimbra/" , $search_name, "/" , $doc_name,"/scheduling")
     return 
       <html:li>
 	<html:a href="{osf:get_entity_link($provider,$search_name)}">
 	  {$demo/csd:name[1]/csd:surname/text()}, {$demo/csd:name[1]/csd:forename/text()}
 	</html:a>
-	<html:a href="{$adapter_link}?oid={$oid}">Scheduling with Free Busy</html:a>
+	<html:a href="{$adapter_link}?urn={$urn}">Scheduling with Free Busy</html:a>
 	<html:div class='description_html'>{osf:get_provider_desc_html($provider,$doc_name)}</html:div>
       </html:li>
    else 

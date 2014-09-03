@@ -98,7 +98,7 @@ declare
     let $sn := $demo/csd:name[1]/csd:surname/text()
     let $gn := $demo/csd:name[1]/csd:forename/text()
     let $dn := concat($gn, " " , $sn)
-    return concat("createAccount " , string($provider/@oid) , "@" , $host , "  password displayName '", $dn , "' givenName '" , $gn , "' sn '", $sn , "'
+    return concat("createAccount " , string($provider/@urn) , "@" , $host , "  password displayName '", $dn , "' givenName '" , $gn , "' sn '", $sn , "'
 ")
  return $create
 };
@@ -126,8 +126,8 @@ declare
    if ($city) 
    then 
       for $provider in $providers_1
-      let $fac_oids :=  $provider/csd:facilities/csd:facility/@oid
-      let $facs := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@oid = $fac_oids and ./csd:address[@type='Practice' and ./csd:addressLine[@component = 'city'] = $city]]
+      let $fac_urns :=  $provider/csd:facilities/csd:facility/@urn
+      let $facs := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urns and ./csd:address[@type='Practice' and ./csd:addressLine[@component = 'city'] = $city]]
       where count($facs) > 0
       return $provider
    else $providers_1
@@ -137,12 +137,12 @@ declare
      {
        for $provider in $providers_2 
        let $demo:= $provider/csd:demographic[1]
-       let $oid := string($provider/@oid)
+       let $urn := string($provider/@urn)
        let $adapter_link := concat($csd_webconf:baseurl,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name,"/scheduling")
        return 
        <li>
 	 {$demo/csd:name[1]/csd:surname/text()}, {$demo/csd:name[1]/csd:forename/text()}
-	 <a href="{$adapter_link}?oid={$oid}"> Scheduling with Free Busy </a>
+	 <a href="{$adapter_link}?urn={$urn}"> Scheduling with Free Busy </a>
 	 <div class='description_html'>{page:get_provider_desc($provider,$doc_name)}</div>
        </li>
        }
@@ -187,8 +187,8 @@ declare function page:get_provider_desc($provider,$doc_name) {
       return if (count($parts) > 1) then concat(functx:trim(string-join($parts)) , ". ") else ()
      ,let $bp:= $demo/csd:contactPoint/csd:codedType[@code="BP"and @codingScheme="urn:ihe:iti:csd:2013:contactPoint"]
        return if ($bp) then ("Business Phone: " , $bp/text() , ".") else ()
-     ,for $fac_ref in $provider/csd:facility/@oid
-       let $fac := if ($fac_ref) then $csd_doc/csd:facilityDirectory/csd:facility[@oid = $fac_ref]  else ()
+     ,for $fac_ref in $provider/csd:facility/@urn
+       let $fac := if ($fac_ref) then $csd_doc/csd:facilityDirectory/csd:facility[@urn = $fac_ref]  else ()
        return if ($fac) then ("Duty Post: " , $fac/csd:primaryName/text() , ".") else ()
    )
 };
@@ -236,7 +236,7 @@ declare function page:get_provider_link($provider,$search_name)
 {
   let $function := csr_proc:get_function_definition($csd_webconf:db,$search_name)
   let $function_link := $function/csd:extension[@type='provider_link' and @urn='urn:openhie.org:openinfoman:adapter:zimbra']
-  return concat($function_link,$provider/@oid)
+  return concat($function_link,$provider/@urn)
 };
 
 
@@ -246,7 +246,7 @@ declare function page:get_freebusy_link($provider,$search_name)
  $provider/csd:demographic/csd:contactPoint[@code="EMAIL" and @codingScheme="urn:ihe:iti:csd:2013:contactPoint"][1]/text()
 (:    let $function := csr_proc:get_function_definition($csd_webconf:db,$search_name)
     let $host := ($function/csd:extension[@type='zimbra_host' and @urn='urn:openhie.org:openinfoman:adapter:zimbra'])[1]
-    return concat("http://" , $host ,"/home/" , string($provider/@oid) , "?fmt=ifb") 
+    return concat("http://" , $host ,"/home/" , string($provider/@urn) , "?fmt=ifb") 
 :)
 };
 
@@ -257,7 +257,7 @@ declare function page:get_email($provider,$search_name)
  $provider/csd:demographic/csd:contactPoint/csd:codedType[@code="EMAIL" and @codingScheme="urn:ihe:iti:csd:2013:contactPoint" ][1]/text()
 (:  let $function := csr_proc:get_function_definition($csd_webconf:db,$search_name)
   let $host := ($function/csd:extension[@type='zimbra_host' and @urn='urn:openhie.org:openinfoman:adapter:zimbra'])[1]
-  return concat(string($provider/@oid) , '@' , string($host))
+  return concat(string($provider/@urn) , '@' , string($host))
 :)
 };
 
@@ -324,7 +324,7 @@ declare function page:get_invite_form($provider,$search_name,$doc_name,$svcs) {
    <div>
      <h2>Send Invitation Request for Appointment</h2>
      <form action="{$action}" method='POST' id='request_form'>
-       <input type='hidden' name='oid' value='{$provider/@oid}'/>
+       <input type='hidden' name='urn' value='{$provider/@urn}'/>
        <input type='hidden' name='cn' value='{($provider/csd:demographic/csd:name/csd:commonName)[1]}'/>
        <label for='subject'>Subject:</label>
        <p>
@@ -360,14 +360,14 @@ declare function page:get_invite_form($provider,$search_name,$doc_name,$svcs) {
 
 (:helper method to avoid cross site scripting issues :)
 declare
-  %rest:path("/CSD/adapter/zimbra/{$query_name}/{$doc_name}/pull_fb/{$provider_oid}/{$fac_oid}/{$svc_oid}")
+  %rest:path("/CSD/adapter/zimbra/{$query_name}/{$doc_name}/pull_fb/{$provider_urn}/{$fac_urn}/{$svc_urn}")
   %rest:GET
   %output:method("xhtml")
-  function page:pull_fb($query_name,$doc_name,$provider_oid,$fac_oid,$svc_oid) 
+  function page:pull_fb($query_name,$doc_name,$provider_urn,$fac_urn,$svc_urn) 
 {
-  let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@oid = $provider_oid]
-  let $facility := $provider/csd:facilities/csd:facility[@oid = $fac_oid]
-  let $service := $facility/csd:service[@oid = $svc_oid]
+  let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@urn = $provider_urn]
+  let $facility := $provider/csd:facilities/csd:facility[@urn = $fac_urn]
+  let $service := $facility/csd:service[@urn = $svc_urn]
   let $fb_uri := $service/csd:freeBusyURI[1]/text()
   return if ($fb_uri) 
     then
@@ -383,7 +383,7 @@ declare function page:free_busy_data($provider,$query_name,$doc_name) {
    page:free_busy_data($provider,$query_name,$doc_name,())
 };
 
-declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids) 
+declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_urns) 
 {
   <div>
     <h1>Facility Based Services</h1>
@@ -391,10 +391,10 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids)
     <ul>
     {
       for $facility in $provider/csd:facilities/csd:facility
-      let $fac_oid := string($facility/@oid)
+      let $fac_urn := string($facility/@urn)
       let $services := 
-	if (count($svc_oids) > 0) 
-	  then  $facility/csd:service[@oid = $svc_oids and csd:freeBusyURI]
+	if (count($svc_urns) > 0) 
+	  then  $facility/csd:service[@urn = $svc_urns and csd:freeBusyURI]
 	  else 	$facility/csd:service[csd:freeBusyURI]
 
 
@@ -403,20 +403,20 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids)
 	  then ()
 	else 
 	  <li>
-	    Facility: {page:get_facility_name($doc_name,$fac_oid)} ({$fac_oid})
+	    Facility: {page:get_facility_name($doc_name,$fac_urn)} ({$fac_urn})
 	    <br/>
 	    <h2>Services</h2>
 	    <ul>
 	      {
 	      for $service in $services
-	      let $svc_oid := string($service/@oid)
-	      let $svc_name := page:get_service_name($doc_name,$svc_oid)
-	      let $cal_url := ($service/csd:extension[@type="calview" and @oid="urn:openhie.org:openinfoman:adapter:zimbra"])[1]/text()
-	      let $fb_uri := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/pull_fb/" , string($provider/@oid) , "/" , $fac_oid, "/" , $svc_oid)
-	      let $id := replace(concat($svc_oid ,"_at_",$fac_oid),"\.","_")
+	      let $svc_urn := string($service/@urn)
+	      let $svc_name := page:get_service_name($doc_name,$svc_urn)
+	      let $cal_url := ($service/csd:extension[@type="calview" and @urn="urn:openhie.org:openinfoman:adapter:zimbra"])[1]/text()
+	      let $fb_uri := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/pull_fb/" , string($provider/@urn) , "/" , $fac_urn, "/" , $svc_urn)
+	      let $id := replace(concat($svc_urn ,"_at_",$fac_urn),"\.","_")
 	      let $data_id := concat("fb_data_",$id)
 	      let $req_id := concat("fb_req_",$id)
-	      let $link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/scheduling?oid=" , string($provider/@oid) , "&amp;svc=",  $svc_oid)
+	      let $link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/scheduling?urn=" , string($provider/@urn) , "&amp;svc=",  $svc_urn)
 	      let $fb_data_js := concat( 
 		"$('#", $data_id , "').text('Requesting Data From: ", $fb_uri , "');",
 		"$('#",$data_id,"').load('", $fb_uri,"');",
@@ -424,7 +424,7 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids)
 		)		
 	      return
 	        <li>
- 		  Service: {$svc_name} ({$svc_oid})
+ 		  Service: {$svc_name} ({$svc_urn})
 		  <br/>
 		  <a id="{$req_id}" href="{$fb_uri}" onClick="{$fb_data_js}">View Free Busy Data</a>
 		  / <a href="{$link}#email" onClick="$('#tab_email a').tab('show'); 	window.location.hash = 'email';return false;" >Schedule This Service</a> 
@@ -445,14 +445,14 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_oids)
 };
 
 
-declare function page:get_facility_name($doc_name,$fac_oid) {
-  let $fac := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@oid = $fac_oid]
+declare function page:get_facility_name($doc_name,$fac_urn) {
+  let $fac := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urn]
   return $fac/csd:primaryName/text()
 
 };
 
-declare function page:get_service_name($doc_name,$svc_oid) {
-  let $service := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:serviceDirectory/csd:service[@oid = $svc_oid]
+declare function page:get_service_name($doc_name,$svc_urn) {
+  let $service := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:serviceDirectory/csd:service[@urn = $svc_urn]
   let $code := string($service/csd:codedType/@code)
   let $codeSystem := string($service/csd:codedType/@codingScheme)
   return svs_lsvs:lookup_code($csd_webconf:db,$code,$codeSystem)
@@ -462,7 +462,7 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name) {
   page:get_schedulable_data($provider,$query_name,$doc_name,()) 
 };
 
-declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_oids) 
+declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_urns) 
 {
   <div>
     <h1>Facility Based Services</h1>
@@ -470,11 +470,11 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
     <ul>
     {
       for $facility in $provider/csd:facilities/csd:facility
-      let $fac_oid := string($facility/@oid)
-      let $fac_entity := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@oid = $fac_oid]
+      let $fac_urn := string($facility/@urn)
+      let $fac_entity := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urn]
       let $services := 
-	if (count($svc_oids) > 0) 
-	  then  $facility/csd:service[@oid = $svc_oids and csd:freeBusyURI]
+	if (count($svc_urns) > 0) 
+	  then  $facility/csd:service[@urn = $svc_urns and csd:freeBusyURI]
 	  else 	$facility/csd:service[csd:freeBusyURI]
       let $fac_ohs := $facility/csd:operatingHours
       return
@@ -482,7 +482,7 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
 	  then ("No services found.")
 	else 
 	  <li>
-	    Facility: {page:get_facility_name($doc_name,$fac_oid)} ({$fac_oid})
+	    Facility: {page:get_facility_name($doc_name,$fac_urn)} ({$fac_urn})
 	    <br/>
 	    Facility Operating Hours:
 	    {page:show_ohs($fac_ohs)}
@@ -490,15 +490,15 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
 	    <ul>
 	      {
 	      for $service in $services
-	      let $svc_oid := string($service/@oid)
-	      let $org_oids := $provider/csd:organizations/csd:organization/@oid
-	      let $svc_name := page:get_service_name($doc_name,$svc_oid)
+	      let $svc_urn := string($service/@urn)
+	      let $org_urns := $provider/csd:organizations/csd:organization/@urn
+	      let $svc_name := page:get_service_name($doc_name,$svc_urn)
 	      let $svc_ohs := $service/csd:operatingHours
-	      let $valid_orgs := $fac_entity/csd:organizations/csd:organization[@oid =$org_oids]
-	      let $link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/scheduling?oid=" , string($provider/@oid) , "&amp;svc=",  $svc_oid)
+	      let $valid_orgs := $fac_entity/csd:organizations/csd:organization[@urn =$org_urns]
+	      let $link := concat( $csd_webconf:baseurl ,"CSD/adapter/zimbra/" , $query_name, "/" , $doc_name, "/scheduling?urn=" , string($provider/@urn) , "&amp;svc=",  $svc_urn)
 	      return
 	        <li>
- 		  Service: {$svc_name} ({$svc_oid})
+ 		  Service: {$svc_name} ({$svc_urn})
 		  <a href="{$link}#email" onClick="$('#tab_email a').tab('show');window.location.hash = 'email';return false;">Schedule</a> 
 		  / <a href="{$link}#invite" onClick="$('#tab_email a').tab('show');window.location.hash = 'invite';return false;">Invite</a>
 		  <br/>
@@ -514,13 +514,13 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
 			  <ul>
 			    {
 			      for $org in $valid_orgs
-			      let $org_oid := string($org/@oid)
-			      let $org_entity := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:organizationDirectory/csd:organization[@oid = $org_oid]
+			      let $org_urn := string($org/@urn)
+			      let $org_entity := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:organizationDirectory/csd:organization[@urn = $org_urn]
 			      let $org_name := $org_entity/csd:primaryName/text()
-			      let $org_ohs := $org/csd:service[@oid = $svc_oid]/csd:operatingHours
+			      let $org_ohs := $org/csd:service[@urn = $svc_urn]/csd:operatingHours
 			      return
 				<li> 
-				  Organization: {$org_name} ({$org_oid})
+				  Organization: {$org_name} ({$org_urn})
 				  <br/>
 				  {page:show_ohs($org_ohs)}		  
 				</li>
@@ -566,11 +566,11 @@ declare
   %rest:path("/CSD/adapter/zimbra/{$query_name}/{$doc_name}/scheduling")
   %rest:GET
   %output:method("xhtml")
-  %rest:query-param("oid", "{$oid}")
+  %rest:query-param("urn", "{$urn}")
   %rest:query-param("svc", "{$svc}")
-  function page:show_results($query_name,$doc_name,$oid,$svc)
+  function page:show_results($query_name,$doc_name,$urn,$svc)
 { 
-let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@oid = $oid]
+let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@urn = $urn]
 let $svcs := if ($svc) then ($svc) else ()
 let $fb_tab :=  page:free_busy_data($provider,$query_name,$doc_name,$svcs)
 let $schedulable_tab := page:get_schedulable_data($provider,$query_name,$doc_name,$svcs)

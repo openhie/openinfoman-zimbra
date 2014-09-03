@@ -6,7 +6,7 @@ echo "Received Data:<pre style='text-align:left;width:100%;
             font-family:monospace;
             font-height:70%;
             background-color:#ffffcc;border:dashed;border-width:3px;border-color:#ffcc99;opacity:0.8;'>" . print_r($_POST,true) . "</pre>";
-$to = $_POST['oid'] . '@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com';
+$to = $_POST['urn'] . '@ec2-54-216-82-154.eu-west-1.compute.amazonaws.com';
 $subject = $_POST['subject'];
 $cn = $_POST['cn'];
 $content = $_POST['content'];
