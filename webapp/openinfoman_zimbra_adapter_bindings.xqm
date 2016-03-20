@@ -46,7 +46,7 @@ declare
        <select name='speciality'>
          <option value=''>Select A Speciality</option>
          { 
-	   for $concept in svs_lsvs:get_single_version_value_set($csd_webconf:db,$speciality_svs_id )//svs:Concept
+	   for $concept in svs_lsvs:get_single_version_value_set($speciality_svs_id )//svs:Concept
 	   let $val := concat($concept/@code, "@@@",$concept/@codeSystem)
 	   return <option value="{$val}">{string($concept/@displayName)}</option>
 	 }
@@ -56,7 +56,7 @@ declare
        <select name='city'>
          <option value=''>Select A City</option>
          { 
-	   let $cities := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility/csd:address[@type="Practice"]/csd:addressLine[@component="city"]/text()
+	   let $cities := csd_dm:open_document($doc_name)/csd:CSD/csd:facilityDirectory/csd:facility/csd:address[@type="Practice"]/csd:addressLine[@component="city"]/text()
 	   return 
 	     for $city in $cities
 	   return <option value="{$city}">{$city}</option>
@@ -90,10 +90,10 @@ declare
   %output:method("text")
   function page:speciality_search($query_name,$doc_name)
 { 
-  let $function := csr_proc:get_function_definition($csd_webconf:db,$query_name)
+  let $function := csr_proc:get_function_definition($query_name)
   let $host := ($function/csd:extension[@type='zimbra_host' and @urn='urn:openhie.org:openinfoman:adapter:zimbra'])[1]
   let $create :=
-    for $provider in csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider
+    for $provider in csd_dm:open_document($doc_name)/csd:CSD/csd:providerDirectory/csd:provider
     let $demo:= $provider/csd:demographic[1]
     let $sn := $demo/csd:name[1]/csd:surname/text()
     let $gn := $demo/csd:name[1]/csd:forename/text()
@@ -114,7 +114,7 @@ declare
 { 
  let $code := substring-before($speciality,'@@@')
  let $codingScheme := substring-after($speciality,'@@@')
- let $providers_0 := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider
+ let $providers_0 := csd_dm:open_document($doc_name)/csd:CSD/csd:providerDirectory/csd:provider
  let $providers_1 := 
    if ($code and $codingScheme)
    then
@@ -127,7 +127,7 @@ declare
    then 
       for $provider in $providers_1
       let $fac_urns :=  $provider/csd:facilities/csd:facility/@urn
-      let $facs := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urns and ./csd:address[@type='Practice' and ./csd:addressLine[@component = 'city'] = $city]]
+      let $facs := csd_dm:open_document($doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urns and ./csd:address[@type='Practice' and ./csd:addressLine[@component = 'city'] = $city]]
       where count($facs) > 0
       return $provider
    else $providers_1
@@ -165,7 +165,7 @@ declare
 };
 
 declare function page:get_provider_desc($provider,$doc_name) {
-   let $csd_doc := csd_dm:open_document($csd_webconf:db,$doc_name) 
+   let $csd_doc := csd_dm:open_document($doc_name) 
    let $demo:= $provider/csd:demographic[1]
    let $names := 
      (
@@ -211,7 +211,7 @@ declare
   let $analyses := 
       <ul>
         {
-  	  for $doc_name in csd_dm:registered_documents($csd_webconf:db)      
+  	  for $doc_name in csd_dm:registered_documents()      
 	  return
   	  <li>
 	  
@@ -234,7 +234,7 @@ declare
 
 declare function page:get_provider_link($provider,$search_name) 
 {
-  let $function := csr_proc:get_function_definition($csd_webconf:db,$search_name)
+  let $function := csr_proc:get_function_definition($search_name)
   let $function_link := $function/csd:extension[@type='provider_link' and @urn='urn:openhie.org:openinfoman:adapter:zimbra']
   return concat($function_link,$provider/@urn)
 };
@@ -244,7 +244,7 @@ declare function page:get_provider_link($provider,$search_name)
 declare function page:get_freebusy_link($provider,$search_name) 
 {
  $provider/csd:demographic/csd:contactPoint[@code="EMAIL" and @codingScheme="urn:ihe:iti:csd:2013:contactPoint"][1]/text()
-(:    let $function := csr_proc:get_function_definition($csd_webconf:db,$search_name)
+(:    let $function := csr_proc:get_function_definition($search_name)
     let $host := ($function/csd:extension[@type='zimbra_host' and @urn='urn:openhie.org:openinfoman:adapter:zimbra'])[1]
     return concat("http://" , $host ,"/home/" , string($provider/@urn) , "?fmt=ifb") 
 :)
@@ -255,7 +255,7 @@ declare function page:get_freebusy_link($provider,$search_name)
 declare function page:get_email($provider,$search_name) 
 {
  $provider/csd:demographic/csd:contactPoint/csd:codedType[@code="EMAIL" and @codingScheme="urn:ihe:iti:csd:2013:contactPoint" ][1]/text()
-(:  let $function := csr_proc:get_function_definition($csd_webconf:db,$search_name)
+(:  let $function := csr_proc:get_function_definition($search_name)
   let $host := ($function/csd:extension[@type='zimbra_host' and @urn='urn:openhie.org:openinfoman:adapter:zimbra'])[1]
   return concat(string($provider/@urn) , '@' , string($host))
 :)
@@ -365,7 +365,7 @@ declare
   %output:method("xhtml")
   function page:pull_fb($query_name,$doc_name,$provider_urn,$fac_urn,$svc_urn) 
 {
-  let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@urn = $provider_urn]
+  let $provider := csd_dm:open_document($doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@urn = $provider_urn]
   let $facility := $provider/csd:facilities/csd:facility[@urn = $fac_urn]
   let $service := $facility/csd:service[@urn = $svc_urn]
   let $fb_uri := $service/csd:freeBusyURI[1]/text()
@@ -446,16 +446,16 @@ declare function page:free_busy_data($provider,$query_name,$doc_name,$svc_urns)
 
 
 declare function page:get_facility_name($doc_name,$fac_urn) {
-  let $fac := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urn]
+  let $fac := csd_dm:open_document($doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urn]
   return $fac/csd:primaryName/text()
 
 };
 
 declare function page:get_service_name($doc_name,$svc_urn) {
-  let $service := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:serviceDirectory/csd:service[@urn = $svc_urn]
+  let $service := csd_dm:open_document($doc_name)/csd:CSD/csd:serviceDirectory/csd:service[@urn = $svc_urn]
   let $code := string($service/csd:codedType/@code)
   let $codeSystem := string($service/csd:codedType/@codingScheme)
-  return svs_lsvs:lookup_code($csd_webconf:db,$code,$codeSystem)
+  return svs_lsvs:lookup_code($code,$codeSystem)
 };
 
 declare function page:get_schedulable_data($provider,$query_name,$doc_name) {
@@ -471,7 +471,7 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
     {
       for $facility in $provider/csd:facilities/csd:facility
       let $fac_urn := string($facility/@urn)
-      let $fac_entity := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urn]
+      let $fac_entity := csd_dm:open_document($doc_name)/csd:CSD/csd:facilityDirectory/csd:facility[@urn = $fac_urn]
       let $services := 
 	if (count($svc_urns) > 0) 
 	  then  $facility/csd:service[@urn = $svc_urns and csd:freeBusyURI]
@@ -515,7 +515,7 @@ declare function page:get_schedulable_data($provider,$query_name,$doc_name,$svc_
 			    {
 			      for $org in $valid_orgs
 			      let $org_urn := string($org/@urn)
-			      let $org_entity := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:organizationDirectory/csd:organization[@urn = $org_urn]
+			      let $org_entity := csd_dm:open_document($doc_name)/csd:CSD/csd:organizationDirectory/csd:organization[@urn = $org_urn]
 			      let $org_name := $org_entity/csd:primaryName/text()
 			      let $org_ohs := $org/csd:service[@urn = $svc_urn]/csd:operatingHours
 			      return
@@ -570,7 +570,7 @@ declare
   %rest:query-param("svc", "{$svc}")
   function page:show_results($query_name,$doc_name,$urn,$svc)
 { 
-let $provider := csd_dm:open_document($csd_webconf:db,$doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@urn = $urn]
+let $provider := csd_dm:open_document($doc_name)/csd:CSD/csd:providerDirectory/csd:provider[@urn = $urn]
 let $svcs := if ($svc) then ($svc) else ()
 let $fb_tab :=  page:free_busy_data($provider,$query_name,$doc_name,$svcs)
 let $schedulable_tab := page:get_schedulable_data($provider,$query_name,$doc_name,$svcs)
